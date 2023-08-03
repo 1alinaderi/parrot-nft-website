@@ -1,0 +1,62 @@
+.my-bg-blue {
+  background-color: #478ac9;
+}
+.my-hover-blue:hover {
+  background-color: #478ac9;
+  color: #fff;
+}
+.blue_btn{
+  background-color: #478ac9;
+  font-size: 27px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 50px;
+  width: fit-content;
+}
+
+.container_slider{
+  overflow: hidden;
+}
+.container_img{
+  width: 150px;
+  animation: imgSlider 10s cubic-bezier(1, 1, 1, 1) infinite;
+}
+
+@keyframes imgSlider {
+  0%   {transform: translate(0px);}
+ 
+  100% {transform: translate(-800px);}
+}
+
+.text_box{
+  border: 3px solid #478ac9;
+  border-radius: 30px;
+  text-shadow: 0px 0px 3px;
+  font-size: 27px;
+  font-weight: 600;
+}
+.gradiant_btn{
+  background-image: linear-gradient(to right, #478ac9, #2cccc4);
+  box-shadow: 0px 2px 6px 0 rgba(0,0,0,0.25);
+  padding: 8px 20px 9px;
+  font-size: 26px;
+  width: fit-content;
+  font-weight: bold;
+}
+
+
+
+.long-text {
+  word-wrap: break-word;
+}
+@media screen and (max-width : 768px) {
+  .text_box{
+    border: none;
+    text-shadow: none;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .font-small-phone{
+    font-size: 16px !important;
+  }
+}

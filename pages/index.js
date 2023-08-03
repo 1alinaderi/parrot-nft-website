@@ -1,11 +1,28 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import {
+  FaAlignJustify,
+  FaDiscord,
+  FaFacebook,
+  FaInstagram,
+  FaMapMarkerAlt,
+  FaStar,
+  FaTelegram,
+  FaTwitter,
+} from "react-icons/fa";
+import { useState } from "react";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { TbBinaryTree } from "react-icons/tb";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       <Head>
@@ -14,101 +31,458 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
+      <main className={`${inter.className}`}>
+        <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas.Header
+            className="justify-content-end"
+            closeButton
+          ></Offcanvas.Header>
+          <Offcanvas.Body className="bg-black">
+            <div className="d-flex flex-column ">
+              <a href="/" className="mx-1 px-3 p-2 fw-bold text-white">
+                HOME
+              </a>
+              <a href="/#roadmap" className="mx-1 p-2 px-3 fw-bold text-white ">
+                ROADMAP
+              </a>
+              <a href="/gallery" className="mx-1 p-2 px-3 fw-bold text-white ">
+                GALLERY
+              </a>
+            </div>
+          </Offcanvas.Body>
+        </Offcanvas>
+        <header className="w-100 p-3 px-4 px-md-5 container-lg">
+          <div className="w-100 row m-0 p-0">
+            <div className="col-6">
+              <img src="/favicon.ico" style={{ width: "70px" }} />
+            </div>
+            <div className="col-6 p-0 m-0 d-md-flex d-none justify-content-end align-items-center">
+              <a
+                href="/"
+                className="mx-1 px-3 text-white my-bg-blue p-2 fw-bold"
+              >
+                HOME
+              </a>
+              <a href="/#roadmap" className="mx-1 p-2 px-3 fw-bold my-hover-blue">
+                ROADMAP
+              </a>
+              <a href="/gallery" className="mx-1 p-2 px-3 fw-bold my-hover-blue">
+                GALLERY
+              </a>
+            </div>
+            <div className="d-flex d-md-none col-6 p-0 m-0 justify-content-end align-items-center fs-1">
+              <FaAlignJustify onClick={handleShow} />
+            </div>
+          </div>
+        </header>
+        <section className="w-100 p-3 px-3 px-md-5 container-lg">
+          <div className="row align-items-center m-0 px-1 px-md-5">
+            <div className="col-md-4 py-3 py-md-5">
+              <img
+                className="w-100"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
               />
+            </div>
+            <div className="col-md-8 p-0 m-0 ps-md-5">
+              <div className="w-100 text_box p-3  text-shadow">
+                in the days of the apocalypse when there was no hope for human
+                survival, AlphaDNA ​biology company created a mutant species to
+                be the new rulers of planet Earth.
+                <br /> 2,222 Collectible,Unique Cheetez are now rule the Earth .
+              </div>
+              <div className="w-100 d-flex row justify-content-md-end justify-content-center align-items-center p-0 m-0 pt-4">
+                <a
+                  style={{ width: "fit-content" }}
+                  className="fs-4 pe-4"
+                  href="/"
+                >
+                  <span
+                    className="px-2 pb-1 rounded fs-3 me-2"
+                    style={{ backgroundColor: "#5C6BC0" }}
+                  >
+                    {" "}
+                    <FaDiscord color="#fff" />
+                  </span>{" "}
+                  Join The Discord
+                </a>
+                <a className="blue_btn p-2 px-4 mt-4 mt-md-0" href="/">
+                  Buy Parrot
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="px-2 px-md-5 mt-5 p-0 m-0">
+            <div className="w-100 p-0 m-0 rounded container_slider d-flex">
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />{" "}
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+              <img
+                className="container_img pe-1"
+                src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+              />
+            </div>
+          </div>
+          <div className="w-100 p-0 m-0 px-3 px-md-5 mt-5">
+            <h2 className="display-5 fw-bold">What Are Cheetez ?</h2>
+            <p
+              style={{ borderBottom: "5px dotted #fff" }}
+              className="pt-3 pb-4 fs-5 "
+            >
+              Cheetez are a community-based collection that is produced from
+              2,222 NFTs . Cheetez with more than 130 features included : Fur ,
+              Tail , Clothing , Mouth , Eyes , Piercings , Earrings , Headgear ,
+              Eyewear , Background and Other items have been built . Each
+              Cheetez is a unique and , non-fungible token (NFT) token that has
+              been execute in Blockchain Tezos .
+            </p>
+          </div>
+          <div className="w-100 p-0 m-0 px-3 px-md-5 mt-4">
+            <div className="w-100 p-0 m-0 d-flex">
+              <Swiper
+                loop
+                breakpoints={{
+                  576: {
+                    slidesPerView: 1,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                  },
+                  991: {
+                    slidesPerView: 3,
+                  },
+                }}
+                spaceBetween={15}
+              >
+                <SwiperSlide>
+                  {" "}
+                  <img
+                    style={{ borderRadius: "20px" }}
+                    className="w-100"
+                    src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  {" "}
+                  <img
+                    style={{ borderRadius: "20px" }}
+                    className="w-100"
+                    src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  {" "}
+                  <img
+                    style={{ borderRadius: "20px" }}
+                    className="w-100"
+                    src="https://ipfs.io/ipfs/QmZiXNQ2ZvDRrAztbPXQPmoeakTMET8U7Sw5zyoKykAN51/8.jpeg"
+                  />
+                </SwiperSlide>
+              </Swiper>
+            </div>
+            <h2 className="mt-5 fs-3 text-center fw-bold">
+              You can view the Cheetez collection on :
+            </h2>
+            <div className="d-flex w-100 mt-2 justify-content-center row">
+              <a className="gradiant_btn mx-3 mt-3" href="/">
+                OPENSEA
+              </a>
+              <a className="gradiant_btn mx-3 mt-3" href="/">
+                RARIBLE
+              </a>
+            </div>
+            <div
+              style={{ borderBottom: "5px dotted #fff" }}
+              className="d-flex justify-content-center align-items-center p-0 m-0 mt-4 pb-4"
+            >
+              <a
+                href="/"
+                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                style={{ backgroundColor: "#5C6BC0" }}
+              >
+                <FaDiscord />
+              </a>
+              <a
+                href="/"
+                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                style={{ backgroundColor: "#C536A4" }}
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="/"
+                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                style={{ backgroundColor: "#55acee" }}
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="/"
+                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                style={{ backgroundColor: "#039BE5" }}
+              >
+                <FaTelegram />
+              </a>
+            </div>
+          </div>
+        </section>
+        <section className="w-100 p-3 px-3 px-md-5 container-lg">
+          <div className="w-100 p-0 m-0 px-md-5 px-3">
+            <div
+              style={{ borderBottom: "5px dotted #fff" }}
+              className=" py-4 w-100 p-0 m-0 d-flex row "
+            >
+              <div className="col-md-6 p-0 m-0">
+                <h2 className="fs-2 fw-bold mb-4">
+                  <TbBinaryTree className="me-3" />
+                  Rarity Rankings
+                </h2>
+                <p className="fs-5">
+                  Each Cheetez is truly unique and rare because no two NFTs are
+                  the same , but some of them are rarer than others .<br />{" "}
+                  After launch , the Cheetez ranking on the Cheetez gallery page
+                  will be available to you .
+                </p>
+                <div className="w-100 pt-5 d-flex justify-content-end">
+                  <a href="/" className="blue_btn p-2 px-4">
+                    <FaStar className="mb-1" color="gold" /> GALLERY
+                  </a>
+                </div>
+              </div>
+              <div className="col-md-6 p-0 m-0 ">
+                <img
+                  src="https://cheetez.net/images/Rarity22.jpg"
+                  className="w-100 px-md-5"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="w-100 p-3 px-3 px-md-5 container-lg">
+          <div className="w-100 p-0 m-0 px-md-5 px-3">
+            <div
+              style={{ borderBottom: "5px dotted #fff" }}
+              className=" py-4 w-100 p-0 m-0 d-flex row "
+            >
+              <h1 className="p-0 m-0 display-4 fw-bold">Membership :</h1>
+              <p className="p-0 m-0 pt-4 fs-5">
+                Holders of Cheetez will have a private membership card that will
+                allow them to access the benefits of the members' club , which
+                will become fully apparent over time . Members' private events :
+                We want the Cheetez Association to ultimately act as a trusted
+                graduate association that gives members the opportunity to learn
+                from each other , network and also have fun. Cheetez forums and
+                events will be held in Metaverse . Cheetez will use the value of
+                its digital brand to create a real presence through partnering
+                with strategic brands . Our vision is to create a sustainable
+                membership network so that Cheetez owners can enjoy the benefits
+                of exclusive club membership .{" "}
+              </p>
+            </div>
+            <div id="roadmap" className=" py-4 w-100 p-0 m-0 d-flex row ">
+              <h1 className="p-0 m-0 display-4 fw-bold text-center">
+                Cheetez Roadmap
+              </h1>
+              <p className="p-0 m-0 pt-4 fs-5">
+                These goals and phases mentioned below are just a small part of
+                the overall goals of the Cheetez Collection , all of which will
+                be completed and available in 2022 .<br />
+                We believe that the goals and next phases of the series will
+                first be raised and announced in the Cheetez membership club and
+                will be published after the approval of the shareholders .
+              </p>
+              <div className="py-4 w-100 p-0 m-0">
+                <div
+                  style={{
+                    borderRadius: "50px",
+                    boxShadow: "5px 5px 20px 0 rgba(0,0,0,0.4)",
+                  }}
+                  className="road_map_box border-2 w-100 p-0 m-0 p-4 d-flex align-items-center border border-dark mt-3"
+                >
+                  <span>
+                    <FaMapMarkerAlt
+                      color="#e2b600"
+                      className="me-4"
+                      size={54}
+                    />
+                  </span>
+                  <span className="fw-bold fs-3 font-small-phone">
+                    2,222 unique Cheetez are started their life in Blockchain
+                    Tezos .
+                  </span>
+                </div>
+                <div
+                  style={{
+                    borderRadius: "50px",
+                    boxShadow: "5px 5px 20px 0 rgba(0,0,0,0.4)",
+                  }}
+                  className="road_map_box border-2 w-100 p-0 m-0 p-4 d-flex align-items-center border border-dark mt-3"
+                >
+                  <span>
+                    <FaMapMarkerAlt
+                      color="#e2b600"
+                      className="me-4"
+                      size={54}
+                    />
+                  </span>
+                  <span className="fw-bold fs-3 font-small-phone">
+                    Construction and operation of a buy and sales gallery 2,222
+                    NFT Cheetez in Metaverse .
+                  </span>
+                </div>
+                <div
+                  style={{
+                    borderRadius: "50px",
+                    boxShadow: "5px 5px 20px 0 rgba(0,0,0,0.4)",
+                  }}
+                  className="road_map_box border-2 w-100 p-0 m-0 p-4 d-flex align-items-center border border-dark mt-3"
+                >
+                  <span>
+                    <FaMapMarkerAlt
+                      color="#e2b600"
+                      className="me-4"
+                      size={54}
+                    />
+                  </span>
+                  <span className="fw-bold fs-3 font-small-phone">
+                    Setting up a Cheetez membership association and club to
+                    achieve goals and hold events .
+                  </span>
+                </div>
+                <div
+                  style={{
+                    borderRadius: "50px",
+                    boxShadow: "5px 5px 20px 0 rgba(0,0,0,0.4)",
+                  }}
+                  className="road_map_box border-2 w-100 p-0 m-0 p-4 d-flex align-items-center border border-dark mt-3"
+                >
+                  <span>
+                    <FaMapMarkerAlt
+                      color="#e2b600"
+                      className="me-4"
+                      size={54}
+                    />
+                  </span>
+                  <span className="fw-bold fs-3 font-small-phone">
+                    Physical partnership with strategic brands to develop and
+                    expand Cheetez's digital brand goals .
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer className="w-100 p-0 m-0 bg-danger mt-5">
+          <div
+            style={{ backgroundColor: "#41807c" }}
+            className="w-100 p-0 m-0 py-4 px-3 px-md-5 text-white"
+          >
+            <h1 className="fs-2">PROVENANCE :</h1>
+            <br />
+            <span className="fs-3 ms-md-5 ps-md-5 ms-0  ">Contract :</span>
+            <a href="/" className="fs-4 ms-md-4 ms-0 long-text">
+              0x3faca58a22dbc62474d452c71ae02c41092a5413
+            </a>
+            <br />
+            <br />
+            <span className="fs-3 ms-md-5 ps-md-5 ms-0  ">ipfs Hash :</span>
+            <a href="/" className="fs-4 ms-md-4 ms-0 long-text">
+              Qmcahk4EikgQuTffFgCc66MZxjkHKcSt2fESYpcigk4wno
             </a>
           </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
+            style={{ backgroundColor: "#333" }}
+            className="w-100 p-0 m-0 p-3"
           >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
+            <div className="d-flex justify-content-center align-items-center p-0 m-0 mt-4 pb-4">
+              <a
+                href="/"
+                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                style={{ backgroundColor: "#5C6BC0" }}
+              >
+                <FaDiscord />
+              </a>
+              <a
+                href="/"
+                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                style={{ backgroundColor: "#C536A4" }}
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="/"
+                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                style={{ backgroundColor: "#55acee" }}
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="/"
+                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                style={{ backgroundColor: "#039BE5" }}
+              >
+                <FaTelegram />
+              </a>
+            </div>
+            <div className="w-100 d-flex justify-content-center pt-2 text-white fs-5">
+              ©2022 BY : <a className="ps-2" href="mailto:malinaderi6@gmail.com"> malinaderi6@gmail.com</a>
+            </div>
+          </div>
+        </footer>
       </main>
     </>
-  )
+  );
 }
