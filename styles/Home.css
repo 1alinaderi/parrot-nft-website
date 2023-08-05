@@ -1,12 +1,12 @@
 .my-bg-blue {
-  background-color: #478ac9;
+  background-color: #24b4b2;
 }
 .my-hover-blue:hover {
-  background-color: #478ac9;
+  background-color: #24b4b2;
   color: #fff;
 }
 .blue_btn{
-  background-color: #478ac9;
+  background-color: #24b4b2;
   font-size: 27px;
   font-weight: 600;
   color: #fff;
@@ -29,14 +29,14 @@
 }
 
 .text_box{
-  border: 3px solid #478ac9;
+  border: 3px solid #24b4b2;
   border-radius: 30px;
   text-shadow: 0px 0px 3px;
   font-size: 27px;
   font-weight: 600;
 }
 .gradiant_btn{
-  background-image: linear-gradient(to right, #478ac9, #2cccc4);
+  background-image: linear-gradient(to right, #24b4b2, #2cccc4);
   box-shadow: 0px 2px 6px 0 rgba(0,0,0,0.25);
   padding: 8px 20px 9px;
   font-size: 26px;
