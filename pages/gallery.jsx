@@ -58,7 +58,7 @@ const Gallery = () => {
               ? parrotInformation.map((e) => {
                   if (filterinput == e.id) {
                     return (
-                      <div className="col-sm-6 col-lg-4 col-xl-3 p-2">
+                      <a href={`/details/${e.id}`} className="col-sm-6 col-lg-4 col-xl-3 p-2">
                         <img src={e.src} className="w-100 p-0 m-0" />
                         <div className="border border-dark rounded-bottom w-100 m-0 text-white">
                           <div className="w-100 p-0 m-0 p-3 border-bottom border-dark d-flex justify-content-between">
@@ -68,13 +68,13 @@ const Gallery = () => {
                             Parrot Collection
                           </div>
                         </div>
-                      </div>
+                      </a>
                     );
                   }
                 })
               : parrotInformation.map((e) => {
                   return (
-                    <div className="col-sm-6 col-lg-4 col-xl-3 p-2">
+                    <a href={`/details/${e.id}`} className="col-sm-6 col-lg-4 col-xl-3 p-2">
                       <img src={e.src} className="w-100 p-0 m-0" />
                       <div className="border border-dark rounded-bottom w-100 m-0 text-white">
                         <div className="w-100 p-0 m-0 p-3 border-bottom border-dark d-flex justify-content-between">
@@ -84,7 +84,7 @@ const Gallery = () => {
                           Parrot Collection
                         </div>
                       </div>
-                    </div>
+                    </a>
                   );
                 })}
           </div>

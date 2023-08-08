@@ -43,8 +43,12 @@ export default function Home() {
               <a href="/" className="mx-1 px-3 p-2 fw-bold text-white">
                 HOME
               </a>
+              
               <a href="/#roadmap" className="mx-1 p-2 px-3 fw-bold text-white ">
                 ROADMAP
+              </a>
+              <a href="/mint" className="mx-1 p-2 px-3 fw-bold text-white ">
+                MINT
               </a>
               <a href="/gallery" className="mx-1 p-2 px-3 fw-bold text-white ">
                 GALLERY
@@ -52,10 +56,10 @@ export default function Home() {
             </div>
           </Offcanvas.Body>
         </Offcanvas>
-        <header className="w-100 p-3 px-4 px-md-5 container-lg">
+        <header className="w-100 p-2 px-4 px-md-5 container-lg">
           <div className="w-100 row m-0 p-0">
             <div className="col-6">
-              <img src="/logo.png" style={{ width: "170px" }} />
+              <img src="/Logo 1!.png" style={{ width: "120px" }} />
             </div>
             <div className="col-6 p-0 m-0 d-md-flex d-none justify-content-end align-items-center">
               <a
@@ -69,6 +73,12 @@ export default function Home() {
                 className="mx-1 p-2 px-3 fw-bold my-hover-blue"
               >
                 ROADMAP
+              </a>
+              <a
+                href="/mint"
+                className="mx-1 p-2 px-3 fw-bold my-hover-blue"
+              >
+                MINT
               </a>
               <a
                 href="/gallery"
@@ -116,7 +126,7 @@ export default function Home() {
           </div>
           <div className="px-2 px-md-5 mt-5 p-0 m-0">
             <div className="w-100 p-0 m-0 rounded container_slider d-flex">
-              {parrotInformation.map((e) => {
+              {parrotInformation.slice(1 , 30).map((e) => {
                 return <img className="container_img pe-1" src={e.src} />;
               })}
             </div>
@@ -127,12 +137,12 @@ export default function Home() {
               style={{ borderBottom: "5px dotted #fff" }}
               className="pt-3 pb-4 fs-5 "
             >
-              World parrots are a collection that is produced from 10.000 NFTs .
-              World parrots with more than 500 features included : Background ,
-              Beak , Color Body , Color Face , Eye , Head , Neck , Perch and
-              Wing items have been built. Each parrot is a unique and ,
-              non-fungible token (NFT) token that has been execute in blockchain
-              ethereum.
+              Pixel art NFTs from world parrots collection that is produced from
+              10.000 NFTs. World parrots with more than 500 features included:
+              Background, Beak, Color Body, Color Face, Eye, Head, Neck, Perch
+              and Wing items have been built. Each parrot is a unique and
+              non-fungible token (NFT) token that has been executed in the
+              ethereum blockchain.
             </p>
           </div>
           <div className="w-100 p-0 m-0 px-3 px-md-5 mt-4">
@@ -340,14 +350,11 @@ export default function Home() {
             <br />
             <span className="fs-3 ms-md-5 ps-md-5 ms-0  ">Contract :</span>
             <a href="/" className="fs-4 ms-md-4 ms-0 long-text">
-              0x3faca58a22dbc62474d452c71ae02c41092a5413
+            0xa63A3889333A71D8614027F8F87fe0618A0e154F
             </a>
             <br />
             <br />
-            <span className="fs-3 ms-md-5 ps-md-5 ms-0  ">ipfs Hash :</span>
-            <a href="/" className="fs-4 ms-md-4 ms-0 long-text">
-              Qmcahk4EikgQuTffFgCc66MZxjkHKcSt2fESYpcigk4wno
-            </a>
+            
           </div>
           <div
             style={{ backgroundColor: "#333" }}

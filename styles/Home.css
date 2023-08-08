@@ -19,13 +19,13 @@
 }
 .container_img{
   width: 150px;
-  animation: imgSlider 10s cubic-bezier(1, 1, 1, 1) infinite;
+  animation: imgSlider 50s cubic-bezier(1, 1, 1, 1) infinite;
 }
 
 @keyframes imgSlider {
   0%   {transform: translate(0px);}
  
-  100% {transform: translate(-800px);}
+  100% {transform: translate(-3300px);}
 }
 
 .text_box{
