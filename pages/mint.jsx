@@ -8,59 +8,9 @@ import { ToastContainer, toast } from "react-toastify";
 import { ContractAbi } from "@/abi/abi";
 
 const mint = (props) => {
-  const { ethereumClient } = props;
+  const { _mint , total , address } = props;
 
-  const [address, setaddress] = useState();
-  const [total, setTotal] = useState();
-
-  const web3 = new Web3(Web3.givenProvider);
-
-  const contractAddress = "0xa63A3889333A71D8614027F8F87fe0618A0e154F";
-  const Con = new web3.eth.Contract(ContractAbi, contractAddress);
-
-  const { setDefaultChain } = useWeb3Modal();
-
-  useEffect(() => {
-    setaddress(ethereumClient?.getAccount()?.address);
-    setDefaultChain(polygon);
-  }, [ethereumClient?.getAccount()?.address]);
-
-  useEffect(() => {
-    _totalSuplly();
-  }, []);
-
-
-  async function _totalSuplly() {
-    await Con.methods
-      .totalSupply()
-      .call()
-      .then((e) => {
-        console.log(e);
-        setTotal(e);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
-
-  async function _mint() {
-    const gasPrice = await web3.eth.getGasPrice();
-    const gas = await Con.methods
-      .mint(address, 1)
-      .estimateGas({ from: address });
-    await Con.methods
-      .mint(address, 1)
-      .send({
-        from: address,
-        gasPrice: gasPrice,
-        gas: gas,
-      })
-      .then(() => {
-        toast.success("you mint 1 parrot", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      });
-  }
+  
 
   return (
     <div className="w-100 p-0 m-0 bg-black" style={{ minHeight: "100vh" }}>
