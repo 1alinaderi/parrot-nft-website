@@ -60,10 +60,10 @@ export default function Home() {
             </div>
           </Offcanvas.Body>
         </Offcanvas>
-        <header className="w-100 p-2 px-4 px-md-5 container-lg">
+        <header className="w-100 p-2 px-4 px-md-5 py-3 container-lg">
           <div className="w-100 row m-0 p-0">
             <div className="col-6">
-              <img src="/Logo 1!.png" style={{ width: "120px" }} />
+              <img src="/Logo.png" style={{ width: "170px" }} />
             </div>
             <div className="col-6 p-0 m-0 d-md-flex d-none justify-content-end align-items-center">
               <a
@@ -229,10 +229,10 @@ export default function Home() {
           </div>
         </section>
         <section className="w-100 p-3 px-3 px-md-5 container-lg">
-          <div className="w-100 p-0 m-0 px-md-5 px-3">
+          <div className="w-100 p-0 m-0 py-3 px-md-5 px-3">
             <div
               style={{ borderBottom: "5px dotted #fff" }}
-              className=" py-4 w-100 p-0 m-0 d-flex row "
+              className=" py-5 w-100 p-0 m-0 d-flex row "
             >
               <div className="col-md-6 p-0 m-0">
                 <h2 className="fs-2 fw-bold mb-4">
@@ -245,7 +245,7 @@ export default function Home() {
                   ranking on the World Parrots gallery page will be available to
                   you.
                 </p>
-                <div className="w-100 pt-5 d-flex justify-content-end">
+                <div className="w-100 pt-5 d-flex justify-content-center">
                   <a href="/gallery" className="blue_btn p-2 px-4">
                     <FaStar className="mb-1" color="gold" /> GALLERY
                   </a>
