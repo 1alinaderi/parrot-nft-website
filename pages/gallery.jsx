@@ -1,12 +1,49 @@
 import { parrotInformation } from "@/constant/parrot";
+import axios from "axios";
 import Head from "next/head";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-const Gallery = () => {
+const Gallery = ({ dataParrot }) => {
   const [filterinput, setFilterinput] = useState();
-  const [newParrot, setnewParrot] = useState();
+  const [dataScroll, setDataScroll] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const callMetadata = async (id) => {
+    const _res = await axios.get(
+      `https://ipfs.io/ipfs/QmdQ9DuVzwNBH44jP6BCbrKFoPEjmXogDxndrcevCBdWop/${id}.json`
+    );
+    return _res.data;
+  };
+  const give100meta = async (min, max) => {
+    let data = [];
+    for (let i = min; i < max; i++) {
+      await callMetadata(i).then((e) => {
+        data.push(e);
+      });
+    }
+    return data;
+  };
+
+  const renderNext = async () => {
+    const min = page * 10 - 10;
+    const max = min + 11;
+    const newData = await give100meta(min + 1, max);
+    await setDataScroll(dataScroll.concat(newData));
+  };
+
+  useEffect(() => {
+    setDataScroll(dataParrot);
+  }, []);
+
+  useEffect(() => {
+    if (page != 1) {
+      console.log(page);
+      renderNext();
+    }
+  }, [page]);
 
   return (
     <div style={{ minHeight: "100vh" }} className="bg-black w-100  p-0 m-0 ">
@@ -25,7 +62,7 @@ const Gallery = () => {
         <div className="w-100 p-0 m-0">
           <img
             style={{ height: "200px", objectFit: "cover" }}
-            src="/banner.JPEG"
+            src="/banner1.JPEG"
             className="w-100"
           />
         </div>
@@ -52,19 +89,63 @@ const Gallery = () => {
             </div>
           </div>
           <div className="col-md-9 row p-0 m-0 px-lg-3 py-3 py-lg-0">
-            {filterinput
-              ? parrotInformation.map((e) => {
-                  if (filterinput == e.id) {
+            <InfiniteScroll
+              dataLength={dataScroll.length ? dataScroll.length : []}
+              className="w-100 p-0 m-0 row"
+              next={async () => {
+                await setPage(page + 1);
+              }}
+              hasMore={true}
+              loader={
+                <h1 className="w-100 text-center text-white">Loading...</h1>
+              }
+              style={{ width: "100%" }}
+              // endMessage={}
+              endMessage={
+                <h1 className="w-100 text-center text-white">END OF ITEM</h1>
+              }
+            >
+              {filterinput
+                ? dataScroll.map((e) => {
+                    if (filterinput == e.name?.replace("Parrot #", "")) {
+                      return (
+                        <a
+                          href={`/details/${e.name?.replace("Parrot #", "")}`}
+                          className="col-sm-6 col-lg-4 col-xl-3 p-2"
+                        >
+                          <img src={e?.image} className="w-100 p-0 m-0" />
+                          <div className="border border-dark rounded-bottom w-100 m-0 text-white">
+                            <div className="w-100 p-0 m-0 p-3 border-bottom border-dark d-flex justify-content-between align-items-center">
+                              <span>{e?.name}</span>
+                              {e?.attributes?.map((type) => {
+                                if (type.trait_type === "Rarity Rank") {
+                                  return <small>Rank: {type.value}</small>;
+                                }
+                              })}
+                            </div>
+                            <div className="w-100 p-0 m-0 p-3  text-center">
+                              Parrot Collection
+                            </div>
+                          </div>
+                        </a>
+                      );
+                    }
+                  })
+                : dataScroll?.map((e) => {
                     return (
                       <a
-                        href={`/details/${e.id}`}
+                        href={`/details/${e.name?.replace("Parrot #", "")}`}
                         className="col-sm-6 col-lg-4 col-xl-3 p-2"
                       >
-                        <img src={e.src} className="w-100 p-0 m-0" />
+                        <img src={e?.image} className="w-100 p-0 m-0" />
                         <div className="border border-dark rounded-bottom w-100 m-0 text-white">
-                          <div className="w-100 p-0 m-0 p-3 border-bottom border-dark d-flex justify-content-between align-items-center">
-                            <span>#{e.id}</span>
-                            <small>#{e.rank}</small>
+                          <div className="w-100 p-0 m-0  p-3 border-bottom border-dark d-flex justify-content-between align-items-center">
+                            <span>{e?.name}</span>
+                            {e?.attributes?.map((type) => {
+                              if (type.trait_type === "Rarity Rank") {
+                                return <small>Rank: {type.value}</small>;
+                              }
+                            })}
                           </div>
                           <div className="w-100 p-0 m-0 p-3  text-center">
                             Parrot Collection
@@ -72,27 +153,8 @@ const Gallery = () => {
                         </div>
                       </a>
                     );
-                  }
-                })
-              : parrotInformation.map((e) => {
-                  return (
-                    <a
-                      href={`/details/${e.id}`}
-                      className="col-sm-6 col-lg-4 col-xl-3 p-2"
-                    >
-                      <img src={e.src} className="w-100 p-0 m-0" />
-                      <div className="border border-dark rounded-bottom w-100 m-0 text-white">
-                        <div className="w-100 p-0 m-0  p-3 border-bottom border-dark d-flex justify-content-between align-items-center">
-                          <span>#{e.id}</span>
-                          <small>Rank #{e.rank}</small>
-                        </div>
-                        <div className="w-100 p-0 m-0 p-3  text-center">
-                          Parrot Collection
-                        </div>
-                      </div>
-                    </a>
-                  );
-                })}
+                  })}
+            </InfiniteScroll>
           </div>
         </div>
       </div>
@@ -101,3 +163,25 @@ const Gallery = () => {
 };
 
 export default Gallery;
+export async function getServerSideProps() {
+  const callMetadata = async (id) => {
+    const _res = await axios.get(
+      `https://ipfs.io/ipfs/QmdQ9DuVzwNBH44jP6BCbrKFoPEjmXogDxndrcevCBdWop/${id}.json`
+    );
+    return _res.data;
+  };
+
+  const give100meta = async () => {
+    let data = [];
+    for (let i = 1; i < 11; i++) {
+      await callMetadata(i).then((e) => {
+        data.push(e);
+      });
+    }
+    return data;
+  };
+
+  const dataParrot = await give100meta();
+
+  return { props: { dataParrot } };
+}

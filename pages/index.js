@@ -93,7 +93,7 @@ export default function Home() {
             </div>
           </div>
         </header>
-        <section className="w-100 p-3 px-3 px-md-5 container-lg">
+        <section className="w-100 p-3 px-3 px-md-5 container-lg pb-0">
           <div className="row align-items-center m-0 px-1 px-md-5">
             <div className="col-md-4 py-3 py-md-3 px-0">
               <img className="w-100" src="/Bnr.png" />
@@ -119,7 +119,10 @@ export default function Home() {
                   </span>{" "}
                   Join The Discord
                 </a>
-                <a  className="blue_btn p-2 px-4 mt-4 mt-md-0" href="https://opensea.io/collection/world-parrots">
+                <a
+                  className="blue_btn p-2 px-4 mt-4 mt-md-0"
+                  href="https://opensea.io/collection/world-parrots"
+                >
                   Buy Parrot
                 </a>
               </div>
@@ -193,20 +196,23 @@ export default function Home() {
               You can view the World Parrots collection on :
             </h2>
             <div className="d-flex w-100 mt-2 justify-content-center row">
-              <a className="gradiant_btn mx-3 mt-3" href="https://opensea.io/collection/world-parrots">
+              <a
+                className="gradiant_btn mx-4 mt-3"
+                href="https://opensea.io/collection/world-parrots"
+              >
                 OPENSEA
               </a>
-              <a className="gradiant_btn mx-3 mt-3" href="https://rarible.com/collection/polygon/0xa63a3889333a71d8614027f8f87fe0618a0e154f/items">
+              <a
+                className="gradiant_btn mx-4   mt-3"
+                href="https://rarible.com/collection/polygon/0xa63a3889333a71d8614027f8f87fe0618a0e154f/items"
+              >
                 RARIBLE
               </a>
             </div>
-            <div
-              style={{ borderBottom: "5px dotted #fff" }}
-              className="d-flex justify-content-center align-items-center p-0 m-0 mt-4 pb-4"
-            >
+            <div className="d-flex justify-content-center align-items-center p-0 m-0 mt-4 pb-1 pe- ">
               <a
                 href="https://discord.gg/PP5QeNpd"
-                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                className=" mx-1 text-white pb-1 px-2 fs-3 rounded-circle"
                 style={{ backgroundColor: "#5C6BC0" }}
               >
                 <FaDiscord />
@@ -220,7 +226,7 @@ export default function Home() {
               </a>
               <a
                 href="https://twitter.com/worldparrotsnft"
-                className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
+                className=" mx-1 text-white pb-1 px-2 fs-3 rounded-circle"
                 style={{ backgroundColor: "#55acee" }}
               >
                 <FaTwitter />
@@ -231,7 +237,10 @@ export default function Home() {
         <section className="w-100 p-3 px-3 px-md-5 container-lg">
           <div className="w-100 p-0 m-0 py-3 px-md-5 px-3">
             <div
-              style={{ borderBottom: "5px dotted #fff" }}
+              style={{
+                borderBottom: "5px dotted #fff",
+                borderTop: "5px dotted #fff",
+              }}
               className=" py-5 w-100 p-0 m-0 d-flex row "
             >
               <div className="col-md-6 p-0 m-0">
@@ -247,7 +256,7 @@ export default function Home() {
                 </p>
                 <div className="w-100 pt-5 d-flex justify-content-center">
                   <a href="/gallery" className="blue_btn p-2 px-4">
-                    <FaStar className="mb-1" color="gold" /> GALLERY
+                    GALLERY
                   </a>
                 </div>
               </div>
@@ -346,16 +355,7 @@ export default function Home() {
           <div
             style={{ backgroundColor: "#41807c" }}
             className="w-100 p-0 m-0 py-4 px-3 px-md-5 text-white"
-          >
-            <h1 className="fs-2">PROVENANCE :</h1>
-            <br />
-            <span className="fs-3 ms-md-5 ps-md-5 ms-0  ">Contract :</span>
-            <a href="/" className="fs-4 ms-md-4 ms-0 long-text">
-              0xa63A3889333A71D8614027F8F87fe0618A0e154F
-            </a>
-            <br />
-            <br />
-          </div>
+          ></div>
           <div
             style={{ backgroundColor: "#333" }}
             className="w-100 p-0 m-0 p-3"

@@ -16,7 +16,7 @@ const PrrotDetails = (props) => {
         <div className="w-100 p-0 m-0">
           <img
             style={{ height: "200px", objectFit: "cover" }}
-            src={"/banner.JPEG"}
+            src={"/banner1.JPEG"}
             className="w-100"
           />
         </div>
