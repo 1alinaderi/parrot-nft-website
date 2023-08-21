@@ -108,7 +108,7 @@ export default function Home() {
                 <a
                   style={{ width: "fit-content" }}
                   className="fs-4 pe-4"
-                  href="https://discord.gg/PP5QeNpd"
+                  href="https://discord.gg/pA4EeHsj94"
                 >
                   <span
                     className="px-2 pb-1 rounded fs-3 me-2"
@@ -204,14 +204,14 @@ export default function Home() {
               </a>
               <a
                 className="gradiant_btn mx-4   mt-3"
-                href="https://rarible.com/collection/polygon/0xa63a3889333a71d8614027f8f87fe0618a0e154f/items"
+                href="https://rarible.com/world-parrots/items"
               >
                 RARIBLE
               </a>
             </div>
             <div className="d-flex justify-content-center align-items-center p-0 m-0 mt-4 pb-1 pe- ">
               <a
-                href="https://discord.gg/PP5QeNpd"
+                href="https://discord.gg/pA4EeHsj94"
                 className=" mx-1 text-white pb-1 px-2 fs-3 rounded-circle"
                 style={{ backgroundColor: "#5C6BC0" }}
               >
@@ -351,18 +351,14 @@ export default function Home() {
           <img src="/Footer.png" className="col-md-9 col-10" />
         </div>
 
-        <footer className="w-100 p-0 m-0 bg-danger">
-          <div
-            style={{ backgroundColor: "#41807c" }}
-            className="w-100 p-0 m-0 py-4 px-3 px-md-5 text-white"
-          ></div>
+        <footer className="w-100 p-0 m-0 ">
           <div
             style={{ backgroundColor: "#333" }}
             className="w-100 p-0 m-0 p-3"
           >
             <div className="d-flex justify-content-center align-items-center p-0 m-0 mt-4 pb-4">
               <a
-                href="https://discord.gg/PP5QeNpd"
+                href="https://discord.gg/pA4EeHsj94"
                 className=" mx-2 text-white pb-1 px-2 fs-3 rounded-circle"
                 style={{ backgroundColor: "#5C6BC0" }}
               >

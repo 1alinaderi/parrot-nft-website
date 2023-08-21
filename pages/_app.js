@@ -24,10 +24,31 @@ export default function App({ Component, pageProps }) {
   const [address, setaddress] = useState();
   const [total, setTotal] = useState();
 
-  const contractAddress = "0xa63A3889333A71D8614027F8F87fe0618A0e154F";
-  const Con = new web3.eth.Contract(ContractAbi, contractAddress);
+
 
   const { setDefaultChain } = useWeb3Modal();
+
+  const chains = [polygon];
+  const projectId = "6a66c41a615675b11ca97ad74aecde2a";
+
+  const { publicClient } = configureChains(chains, [
+    w3mProvider({ projectId }),
+  ]);
+  const wagmiConfig = createConfig({
+    autoConnect: true,
+    connectors: w3mConnectors({ projectId, chains }),
+    publicClient,
+  });
+  const ethereumClient = new EthereumClient(wagmiConfig, chains);
+
+  useEffect(() => {
+    setaddress(ethereumClient?.getAccount()?.address);
+    setDefaultChain(polygon);
+  }, [ethereumClient?.getAccount()?.address]);
+
+
+  const contractAddress = "0xa63A3889333A71D8614027F8F87fe0618A0e154F";
+  const Con = new web3.eth.Contract(ContractAbi, contractAddress);
 
   async function _totalSuplly() {
     await Con.methods
@@ -60,23 +81,7 @@ export default function App({ Component, pageProps }) {
         });
       });
   }
-  const chains = [polygon];
-  const projectId = "6a66c41a615675b11ca97ad74aecde2a";
-
-  const { publicClient } = configureChains(chains, [
-    w3mProvider({ projectId }),
-  ]);
-  const wagmiConfig = createConfig({
-    autoConnect: true,
-    connectors: w3mConnectors({ projectId, chains }),
-    publicClient,
-  });
-  const ethereumClient = new EthereumClient(wagmiConfig, chains);
-
-  useEffect(() => {
-    setaddress(ethereumClient?.getAccount()?.address);
-    setDefaultChain(polygon);
-  }, [ethereumClient?.getAccount()?.address]);
+ 
 
   useEffect(() => {
     _totalSuplly();
