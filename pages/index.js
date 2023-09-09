@@ -350,6 +350,10 @@ export default function Home() {
         <div className="w-100 p-0 m-0 px-md-5 d-flex justify-content-center">
           <img src="/Footer.png" className="col-md-9 col-10" />
         </div>
+        <div
+          style={{ backgroundColor: "#24b4b2" }}
+          className="w-100 py-4 "
+        ></div>
 
         <footer className="w-100 p-0 m-0 ">
           <div

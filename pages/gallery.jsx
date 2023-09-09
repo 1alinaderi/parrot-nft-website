@@ -45,6 +45,44 @@ const Gallery = ({ dataParrot }) => {
     }
   }, [page]);
 
+  async function searchHandle() {
+    await axios
+      .get(
+        `https://ipfs.io/ipfs/QmdQ9DuVzwNBH44jP6BCbrKFoPEjmXogDxndrcevCBdWop/${filterinput}.json`
+      )
+      .then((_res) => {
+        if (_res.status === 200) {
+          setDataScroll([_res.data]);
+        }
+      })
+      .catch(() => {
+        alert("Cant Find Item");
+      });
+  }
+
+  async function resetHandle() {
+    const callMetadata1 = async (id) => {
+      const _res = await axios.get(
+        `https://ipfs.io/ipfs/QmdQ9DuVzwNBH44jP6BCbrKFoPEjmXogDxndrcevCBdWop/${id}.json`
+      );
+      return _res.data;
+    };
+
+    const give100meta1 = async () => {
+      let data = [];
+      for (let i = 1; i < 11; i++) {
+        await callMetadata1(i).then((e) => {
+          data.push(e);
+        });
+      }
+      return data;
+    };
+
+    const dataParrot = await give100meta1();
+
+    setDataScroll(dataParrot);
+  }
+
   return (
     <div style={{ minHeight: "100vh" }} className="bg-black w-100  p-0 m-0 ">
       <Head>
@@ -85,6 +123,20 @@ const Gallery = ({ dataParrot }) => {
                   placeholder="Search by ID"
                   onChange={(e) => setFilterinput(e.target.value)}
                 />
+                <div className="d-flex w-100 p-0 m-0">
+                  <button
+                    onClick={searchHandle}
+                    className="btn btn-primary mt-3 me-1"
+                  >
+                    Search
+                  </button>
+                  <button
+                    onClick={resetHandle}
+                    className="btn btn-primary mt-3 ms-1"
+                  >
+                    Reset
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -105,55 +157,29 @@ const Gallery = ({ dataParrot }) => {
                 <h1 className="w-100 text-center text-white">END OF ITEM</h1>
               }
             >
-              {filterinput
-                ? dataScroll.map((e) => {
-                    if (filterinput == e.name?.replace("Parrot #", "")) {
-                      return (
-                        <a
-                          href={`/details/${e.name?.replace("Parrot #", "")}`}
-                          className="col-sm-6 col-lg-4 col-xl-3 p-2"
-                        >
-                          <img src={e?.image} className="w-100 p-0 m-0" />
-                          <div className="border border-dark rounded-bottom w-100 m-0 text-white">
-                            <div className="w-100 p-0 m-0 p-3 border-bottom border-dark d-flex justify-content-between align-items-center">
-                              <span>{e?.name}</span>
-                              {e?.attributes?.map((type) => {
-                                if (type.trait_type === "Rarity Rank") {
-                                  return <small>Rank: {type.value}</small>;
-                                }
-                              })}
-                            </div>
-                            <div className="w-100 p-0 m-0 p-3  text-center">
-                              Parrot Collection
-                            </div>
-                          </div>
-                        </a>
-                      );
-                    }
-                  })
-                : dataScroll?.map((e) => {
-                    return (
-                      <a
-                        href={`/details/${e.name?.replace("Parrot #", "")}`}
-                        className="col-sm-6 col-lg-4 col-xl-3 p-2"
-                      >
-                        <img src={e?.image} className="w-100 p-0 m-0" />
-                        <div className="border border-dark rounded-bottom w-100 m-0 text-white">
-                          <div className="w-100 p-0 m-0  p-3 border-bottom border-dark d-flex justify-content-between align-items-center">
-                            <span>{e?.name}</span>
-                            {e?.attributes?.map((type) => {
-                              if (type.trait_type === "Rarity Rank") {
-                                return <small>Rank: {type.value}</small>;
-                              }
-                            })}
-                          </div>
-                          <div className="w-100 p-0 m-0 p-3  text-center">
-                            Parrot Collection
-                          </div>
-                        </div>
-                      </a>
-                    );
-                  })}
+              {dataScroll?.map((e) => {
+                return (
+                  <a
+                    href={`/details/${e.name?.replace("Parrot #", "")}`}
+                    className="col-sm-6 col-lg-4 col-xl-3 p-2"
+                  >
+                    <img src={e?.image} className="w-100 p-0 m-0" />
+                    <div className="border border-dark rounded-bottom w-100 m-0 text-white">
+                      <div className="w-100 p-0 m-0 p-3 border-bottom border-dark d-flex justify-content-between align-items-center">
+                        <span>{e?.name}</span>
+                        {e?.attributes?.map((type) => {
+                          if (type.trait_type === "Rarity Rank") {
+                            return <small>Rank: {type.value}</small>;
+                          }
+                        })}
+                      </div>
+                      <div className="w-100 p-0 m-0 p-3  text-center">
+                        Parrot Collection
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
             </InfiniteScroll>
           </div>
         </div>
